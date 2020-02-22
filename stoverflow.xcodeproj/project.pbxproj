@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		72301E9C240128ED00A4B49A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301E9B240128ED00A4B49A /* AppDelegate.swift */; };
 		72301E9E240128ED00A4B49A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301E9D240128ED00A4B49A /* SceneDelegate.swift */; };
-		72301EA0240128ED00A4B49A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301E9F240128ED00A4B49A /* ViewController.swift */; };
-		72301EA3240128ED00A4B49A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72301EA1240128ED00A4B49A /* Main.storyboard */; };
 		72301EA6240128ED00A4B49A /* stoverflow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72301EA4240128ED00A4B49A /* stoverflow.xcdatamodeld */; };
 		72301EA8240128F100A4B49A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72301EA7240128F100A4B49A /* Assets.xcassets */; };
 		72301EAB240128F100A4B49A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72301EA9240128F100A4B49A /* LaunchScreen.storyboard */; };
 		72301EB6240128F100A4B49A /* stoverflowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EB5240128F100A4B49A /* stoverflowTests.swift */; };
 		72301EC1240128F100A4B49A /* stoverflowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EC0240128F100A4B49A /* stoverflowUITests.swift */; };
+		72301ED024015E6600A4B49A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301ECF24015E6600A4B49A /* Coordinator.swift */; };
+		72301ED224015EAC00A4B49A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301ED124015EAC00A4B49A /* AppCoordinator.swift */; };
+		72301ED5240164BA00A4B49A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301ED4240164BA00A4B49A /* DashboardViewController.swift */; };
+		72301ED72401656400A4B49A /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301ED62401656400A4B49A /* DashboardCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +41,6 @@
 		72301E98240128ED00A4B49A /* stoverflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stoverflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72301E9B240128ED00A4B49A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72301E9D240128ED00A4B49A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		72301E9F240128ED00A4B49A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		72301EA2240128ED00A4B49A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		72301EA5240128ED00A4B49A /* stoverflow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = stoverflow.xcdatamodel; sourceTree = "<group>"; };
 		72301EA7240128F100A4B49A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72301EAA240128F100A4B49A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +51,10 @@
 		72301EBC240128F100A4B49A /* stoverflowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stoverflowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72301EC0240128F100A4B49A /* stoverflowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stoverflowUITests.swift; sourceTree = "<group>"; };
 		72301EC2240128F100A4B49A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72301ECF24015E6600A4B49A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		72301ED124015EAC00A4B49A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		72301ED4240164BA00A4B49A /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		72301ED62401656400A4B49A /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +105,15 @@
 		72301E9A240128ED00A4B49A /* stoverflow */ = {
 			isa = PBXGroup;
 			children = (
+				72301ED32401643A00A4B49A /* dashboard */,
+				72301ECE24015E5100A4B49A /* utilities */,
 				72301E9B240128ED00A4B49A /* AppDelegate.swift */,
 				72301E9D240128ED00A4B49A /* SceneDelegate.swift */,
-				72301E9F240128ED00A4B49A /* ViewController.swift */,
-				72301EA1240128ED00A4B49A /* Main.storyboard */,
 				72301EA7240128F100A4B49A /* Assets.xcassets */,
 				72301EA9240128F100A4B49A /* LaunchScreen.storyboard */,
 				72301EAC240128F100A4B49A /* Info.plist */,
 				72301EA4240128ED00A4B49A /* stoverflow.xcdatamodeld */,
+				72301ED124015EAC00A4B49A /* AppCoordinator.swift */,
 			);
 			path = stoverflow;
 			sourceTree = "<group>";
@@ -129,6 +134,23 @@
 				72301EC2240128F100A4B49A /* Info.plist */,
 			);
 			path = stoverflowUITests;
+			sourceTree = "<group>";
+		};
+		72301ECE24015E5100A4B49A /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				72301ECF24015E6600A4B49A /* Coordinator.swift */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		72301ED32401643A00A4B49A /* dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				72301ED4240164BA00A4B49A /* DashboardViewController.swift */,
+				72301ED62401656400A4B49A /* DashboardCoordinator.swift */,
+			);
+			path = dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +259,6 @@
 			files = (
 				72301EAB240128F100A4B49A /* LaunchScreen.storyboard in Resources */,
 				72301EA8240128F100A4B49A /* Assets.xcassets in Resources */,
-				72301EA3240128ED00A4B49A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,10 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72301EA0240128ED00A4B49A /* ViewController.swift in Sources */,
+				72301ED024015E6600A4B49A /* Coordinator.swift in Sources */,
+				72301ED5240164BA00A4B49A /* DashboardViewController.swift in Sources */,
 				72301E9C240128ED00A4B49A /* AppDelegate.swift in Sources */,
+				72301ED224015EAC00A4B49A /* AppCoordinator.swift in Sources */,
 				72301EA6240128ED00A4B49A /* stoverflow.xcdatamodeld in Sources */,
 				72301E9E240128ED00A4B49A /* SceneDelegate.swift in Sources */,
+				72301ED72401656400A4B49A /* DashboardCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +325,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		72301EA1240128ED00A4B49A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				72301EA2240128ED00A4B49A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		72301EA9240128F100A4B49A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
