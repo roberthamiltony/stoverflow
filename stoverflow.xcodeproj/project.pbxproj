@@ -21,6 +21,13 @@
 		72301ED924016CE900A4B49A /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301ED824016CE900A4B49A /* DashboardViewModel.swift */; };
 		72301EDB24016DC400A4B49A /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EDA24016DC400A4B49A /* DashboardTableViewCell.swift */; };
 		72301EDD2401866400A4B49A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EDC2401866400A4B49A /* UIViewExtensions.swift */; };
+		72301EDF2402964D00A4B49A /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EDE2402964D00A4B49A /* APIRequest.swift */; };
+		72301EE12402966100A4B49A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EE02402966100A4B49A /* APIClient.swift */; };
+		72301EE4240296B300A4B49A /* StackOverflowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EE3240296B300A4B49A /* StackOverflowClient.swift */; };
+		72301EE7240297A100A4B49A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EE6240297A100A4B49A /* User.swift */; };
+		72301EEC2402CB3600A4B49A /* UsersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EEB2402CB3600A4B49A /* UsersRequest.swift */; };
+		72301EEE2402DC8000A4B49A /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EED2402DC8000A4B49A /* Wrapper.swift */; };
+		72301EF02402F02A00A4B49A /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EEF2402F02A00A4B49A /* URLExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +68,13 @@
 		72301ED824016CE900A4B49A /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		72301EDA24016DC400A4B49A /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
 		72301EDC2401866400A4B49A /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		72301EDE2402964D00A4B49A /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		72301EE02402966100A4B49A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		72301EE3240296B300A4B49A /* StackOverflowClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackOverflowClient.swift; sourceTree = "<group>"; };
+		72301EE6240297A100A4B49A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		72301EEB2402CB3600A4B49A /* UsersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRequest.swift; sourceTree = "<group>"; };
+		72301EED2402DC8000A4B49A /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
+		72301EEF2402F02A00A4B49A /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +125,7 @@
 		72301E9A240128ED00A4B49A /* stoverflow */ = {
 			isa = PBXGroup;
 			children = (
+				72301EE22402968B00A4B49A /* stackOverflow */,
 				72301ED32401643A00A4B49A /* dashboard */,
 				72301ECE24015E5100A4B49A /* utilities */,
 				72301E9B240128ED00A4B49A /* AppDelegate.swift */,
@@ -147,6 +162,9 @@
 			children = (
 				72301ECF24015E6600A4B49A /* Coordinator.swift */,
 				72301EDC2401866400A4B49A /* UIViewExtensions.swift */,
+				72301EDE2402964D00A4B49A /* APIRequest.swift */,
+				72301EE02402966100A4B49A /* APIClient.swift */,
+				72301EEF2402F02A00A4B49A /* URLExtensions.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -160,6 +178,33 @@
 				72301EDA24016DC400A4B49A /* DashboardTableViewCell.swift */,
 			);
 			path = dashboard;
+			sourceTree = "<group>";
+		};
+		72301EE22402968B00A4B49A /* stackOverflow */ = {
+			isa = PBXGroup;
+			children = (
+				72301EE8240297B600A4B49A /* requests */,
+				72301EE52402971100A4B49A /* entities */,
+				72301EE3240296B300A4B49A /* StackOverflowClient.swift */,
+			);
+			path = stackOverflow;
+			sourceTree = "<group>";
+		};
+		72301EE52402971100A4B49A /* entities */ = {
+			isa = PBXGroup;
+			children = (
+				72301EE6240297A100A4B49A /* User.swift */,
+				72301EED2402DC8000A4B49A /* Wrapper.swift */,
+			);
+			path = entities;
+			sourceTree = "<group>";
+		};
+		72301EE8240297B600A4B49A /* requests */ = {
+			isa = PBXGroup;
+			children = (
+				72301EEB2402CB3600A4B49A /* UsersRequest.swift */,
+			);
+			path = requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,11 +342,18 @@
 				72301E9C240128ED00A4B49A /* AppDelegate.swift in Sources */,
 				72301ED224015EAC00A4B49A /* AppCoordinator.swift in Sources */,
 				72301EA6240128ED00A4B49A /* stoverflow.xcdatamodeld in Sources */,
+				72301EE4240296B300A4B49A /* StackOverflowClient.swift in Sources */,
+				72301EE7240297A100A4B49A /* User.swift in Sources */,
 				72301E9E240128ED00A4B49A /* SceneDelegate.swift in Sources */,
 				72301EDD2401866400A4B49A /* UIViewExtensions.swift in Sources */,
+				72301EEE2402DC8000A4B49A /* Wrapper.swift in Sources */,
+				72301EDF2402964D00A4B49A /* APIRequest.swift in Sources */,
+				72301EF02402F02A00A4B49A /* URLExtensions.swift in Sources */,
 				72301EDB24016DC400A4B49A /* DashboardTableViewCell.swift in Sources */,
 				72301ED72401656400A4B49A /* DashboardCoordinator.swift in Sources */,
 				72301ED924016CE900A4B49A /* DashboardViewModel.swift in Sources */,
+				72301EEC2402CB3600A4B49A /* UsersRequest.swift in Sources */,
+				72301EE12402966100A4B49A /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
