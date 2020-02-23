@@ -18,6 +18,9 @@
 		72301ED224015EAC00A4B49A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301ED124015EAC00A4B49A /* AppCoordinator.swift */; };
 		72301ED5240164BA00A4B49A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301ED4240164BA00A4B49A /* DashboardViewController.swift */; };
 		72301ED72401656400A4B49A /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301ED62401656400A4B49A /* DashboardCoordinator.swift */; };
+		72301ED924016CE900A4B49A /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301ED824016CE900A4B49A /* DashboardViewModel.swift */; };
+		72301EDB24016DC400A4B49A /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EDA24016DC400A4B49A /* DashboardTableViewCell.swift */; };
+		72301EDD2401866400A4B49A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EDC2401866400A4B49A /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		72301ED124015EAC00A4B49A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		72301ED4240164BA00A4B49A /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		72301ED62401656400A4B49A /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
+		72301ED824016CE900A4B49A /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		72301EDA24016DC400A4B49A /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
+		72301EDC2401866400A4B49A /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				72301ECF24015E6600A4B49A /* Coordinator.swift */,
+				72301EDC2401866400A4B49A /* UIViewExtensions.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 			children = (
 				72301ED4240164BA00A4B49A /* DashboardViewController.swift */,
 				72301ED62401656400A4B49A /* DashboardCoordinator.swift */,
+				72301ED824016CE900A4B49A /* DashboardViewModel.swift */,
+				72301EDA24016DC400A4B49A /* DashboardTableViewCell.swift */,
 			);
 			path = dashboard;
 			sourceTree = "<group>";
@@ -289,7 +298,10 @@
 				72301ED224015EAC00A4B49A /* AppCoordinator.swift in Sources */,
 				72301EA6240128ED00A4B49A /* stoverflow.xcdatamodeld in Sources */,
 				72301E9E240128ED00A4B49A /* SceneDelegate.swift in Sources */,
+				72301EDD2401866400A4B49A /* UIViewExtensions.swift in Sources */,
+				72301EDB24016DC400A4B49A /* DashboardTableViewCell.swift in Sources */,
 				72301ED72401656400A4B49A /* DashboardCoordinator.swift in Sources */,
+				72301ED924016CE900A4B49A /* DashboardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
