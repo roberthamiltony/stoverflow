@@ -62,12 +62,15 @@ class DashboardTableViewCell: UITableViewCell {
         labelStack.addArrangedSubview(reputation)
         let image = UIImageView()
         profileImage = image
+        image.layer.cornerRadius = 5.0
+        image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         let mainContentStack = UIStackView()
         mainContentStack.axis = .horizontal
         mainContentStack.translatesAutoresizingMaskIntoConstraints = false
         mainContentStack.addArrangedSubview(image)
         mainContentStack.addArrangedSubview(labelStack)
+        mainContentStack.spacing = 10.0
         image.addConstraints([
             NSLayoutConstraint(item: image, attribute: .width, relatedBy: .equal, toItem: profileImage, attribute: .height, multiplier: 1.0, constant: 0)
         ])
@@ -80,10 +83,14 @@ class DashboardTableViewCell: UITableViewCell {
         followButton = follow
         blockButton = block
         // TODO add localisation
-        follow.titleLabel?.text = "Follow"
-        block.titleLabel?.text = "Block"
+        follow.setTitle("Follow", for: .normal)
+        block.setTitle("Block", for: .normal)
         follow.backgroundColor = .systemBlue
         block.backgroundColor = .systemRed
+        [follow, block].forEach {
+            $0.layer.cornerRadius = 5.0
+            $0.layer.masksToBounds = true
+        }
         let expanded = UIStackView()
         expandedStack = expanded
         expanded.axis = .horizontal

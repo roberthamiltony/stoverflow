@@ -14,7 +14,11 @@ class DashboardViewController: UITableViewController {
     private static let dashboardCellReuseID = "dashboardCellReuseID"
     
     /// A view model through which the stack overflow data can be accessed
-    var viewModel: DashboardViewModel?
+    var viewModel: DashboardViewModel? {
+        didSet {
+            viewModel?.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         title = "StackOverflow top 20"
@@ -26,7 +30,7 @@ class DashboardViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 2
+            return viewModel?.userVMs.count ?? 0
         default:
             return 0
         }
@@ -37,9 +41,12 @@ class DashboardViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: DashboardViewController.dashboardCellReuseID) as? DashboardTableViewCell {
-            cell.nameLabel.text = "hi"
-            cell.reputationLabel.text = "5"
+        if let cell = tableView.dequeueReusableCell(withIdentifier: DashboardViewController.dashboardCellReuseID) as? DashboardTableViewCell, indexPath.row < viewModel?.userVMs.count ?? 0, let cellVM = viewModel?.userVMs[indexPath.row] {
+            cell.nameLabel.text = cellVM.user.displayName
+            cell.reputationLabel.text = String(cellVM.user.reputation)
+            if let data = cellVM.profileImageData {
+                cell.profileImage.image = UIImage(data: data)
+            }
             return cell
         } else {
             // This should never be reached
@@ -56,5 +63,16 @@ class DashboardViewController: UITableViewController {
             tableView.endUpdates()
         }
     }
+}
+
+extension DashboardViewController: DashboardViewModelDelegate {
+    func viewModelGetUsersDidFail(_ viewModel: DashboardViewModel, error: Error) {
+        
+    }
+    
+    func viewModelGetUsersDidSucceed(_ viewModel: DashboardViewModel) {
+        tableView.reloadData()
+    }
+    
     
 }

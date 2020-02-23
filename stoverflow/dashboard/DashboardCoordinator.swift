@@ -15,6 +15,7 @@ class DashboardCoordinator: Coordinator {
     override func start() {
         let dashboard = DashboardViewController()
         dashboardViewController = dashboard
+        dashboard.viewModel = DashboardViewModel()
         navigationController.pushViewController(dashboard, animated: false)
     }
 }

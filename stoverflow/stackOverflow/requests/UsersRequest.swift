@@ -11,13 +11,16 @@ import Foundation
 struct UsersRequest: APIRequest {
     let resourcePath = "users"
     
-    let parameters: [String : String]? = [
-        "order": "desc",
-        "sort": "reputation",
-        "site": "stackoverflow"
-    ]
+    let parameters: [String : String]?
     
     typealias entity = [User]
     
-    
+    init(pageSize: Int) {
+        parameters = [
+            "pagesize": String(pageSize),
+            "order": "desc",
+            "sort": "reputation",
+            "site": "stackoverflow"
+        ]
+    }
 }
