@@ -13,18 +13,37 @@ import UIKit
 class DashboardViewController: UITableViewController {
     private static let dashboardCellReuseID = "dashboardCellReuseID"
     
+    private var loadingIndicator: UIActivityIndicatorView!
+    
     /// A view model through which the stack overflow data can be accessed
     var viewModel: DashboardViewModel? {
         didSet {
             viewModel?.delegate = self
+            viewModel?.getUsers()
+            loadViewIfNeeded()
+            showLoadingIndicator()
         }
     }
     
     override func viewDidLoad() {
         title = "StackOverflow top 20"
+        setupTable()
+        setupLoadingIndicator()
+    }
+    
+    private func setupTable() {
         tableView.register(DashboardTableViewCell.self, forCellReuseIdentifier: DashboardViewController.dashboardCellReuseID)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    private func setupLoadingIndicator() {
+        let indicator = UIActivityIndicatorView(style: .large)
+        loadingIndicator = indicator
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(indicator)
+        indicator.centreInSuperview()
+        indicator.isHidden = true
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,11 +61,7 @@ class DashboardViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: DashboardViewController.dashboardCellReuseID) as? DashboardTableViewCell, indexPath.row < viewModel?.userVMs.count ?? 0, let cellVM = viewModel?.userVMs[indexPath.row] {
-            cell.nameLabel.text = cellVM.user.displayName
-            cell.reputationLabel.text = String(cellVM.user.reputation)
-            if let data = cellVM.profileImageData {
-                cell.profileImage.image = UIImage(data: data)
-            }
+            cell.viewModel = cellVM
             return cell
         } else {
             // This should never be reached
@@ -63,15 +78,40 @@ class DashboardViewController: UITableViewController {
             tableView.endUpdates()
         }
     }
+    
+    private func showLoadingIndicator() {
+        UIView.animate(withDuration: 0.2) {
+            self.loadingIndicator.alpha = 1
+            self.loadingIndicator.isHidden = false
+            self.loadingIndicator.startAnimating()
+        }
+    }
+    
+    private func hideLoadingIndicator() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.loadingIndicator.alpha = 0
+        }, completion: { _ in
+            self.loadingIndicator.isHidden = true
+            self.loadingIndicator.stopAnimating()
+        })
+    }
 }
 
 extension DashboardViewController: DashboardViewModelDelegate {
     func viewModelGetUsersDidFail(_ viewModel: DashboardViewModel, error: Error) {
-        
+        hideLoadingIndicator()
+        let alert = UIAlertController(title: "Failed to load users", message: "Failed to load Stack Overflow users", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Retry", style: .default) { (action) in
+            self.viewModel?.getUsers()
+            self.showLoadingIndicator()
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
     func viewModelGetUsersDidSucceed(_ viewModel: DashboardViewModel) {
         tableView.reloadData()
+        hideLoadingIndicator()
     }
     
     
