@@ -13,6 +13,13 @@ import UIKit
 /// with buttons.
 class DashboardTableViewCell: UITableViewCell {
     
+    /// A view model backing this instance
+    var viewModel: DashboardTableViewCellViewModel? {
+        didSet {
+            bindViewModel()
+        }
+    }
+    
     /// A label intented to display a name
     private (set) var nameLabel: UILabel!
     
@@ -39,7 +46,6 @@ class DashboardTableViewCell: UITableViewCell {
     private func setupContent() {
         mainStack = UIStackView()
         mainStack.axis = .vertical
-        mainStack.isUserInteractionEnabled = false
         mainStack.translatesAutoresizingMaskIntoConstraints = false
         mainStack.spacing = 20
         contentView.addSubview(mainStack)
@@ -71,6 +77,7 @@ class DashboardTableViewCell: UITableViewCell {
         mainContentStack.addArrangedSubview(image)
         mainContentStack.addArrangedSubview(labelStack)
         mainContentStack.spacing = 10.0
+        mainContentStack.isUserInteractionEnabled = false
         image.addConstraints([
             NSLayoutConstraint(item: image, attribute: .width, relatedBy: .equal, toItem: profileImage, attribute: .height, multiplier: 1.0, constant: 0)
         ])
@@ -87,9 +94,12 @@ class DashboardTableViewCell: UITableViewCell {
         block.setTitle("Block", for: .normal)
         follow.backgroundColor = .systemBlue
         block.backgroundColor = .systemRed
+        follow.addTarget(self, action: #selector(didSelectFollow(_:)), for: .touchUpInside)
+        block.addTarget(self, action: #selector(didSelectBlocked(_:)), for: .touchUpInside)
         [follow, block].forEach {
             $0.layer.cornerRadius = 5.0
             $0.layer.masksToBounds = true
+            $0.isUserInteractionEnabled = true
         }
         let expanded = UIStackView()
         expandedStack = expanded
@@ -106,10 +116,67 @@ class DashboardTableViewCell: UITableViewCell {
     /// cell will need to be notified of the change for this to be properly displayed
     func toggleExpandedState() {
         mainStack.arrangedSubviews[1].isHidden = !mainStack.arrangedSubviews[1].isHidden
-        
+    }
+    
+    @objc private func didSelectFollow(_ sender: Any?) {
+        if let viewModel = viewModel {
+            if let following = viewModel.following {
+                viewModel.following = !following
+            }
+        }
+    }
+    
+    @objc private func didSelectBlocked(_ select: Any?) {
+        if let viewModel = viewModel {
+            if let blocked = viewModel.blocked {
+                viewModel.blocked = !blocked
+            }
+        }
+    }
+    
+    private func bindViewModel() {
+        if let viewModel = viewModel {
+            viewModel.delegate = self
+            nameLabel.text = viewModel.user.displayName
+            reputationLabel.text = String(viewModel.user.reputation)
+            if let imageData = viewModel.profileImageData {
+                profileImage.image = UIImage(data: imageData)
+            }
+            updateFollowButton()
+            updateBlockedButton()
+        }
+    }
+    
+    private func updateFollowButton() {
+        if let viewModel = viewModel {
+            let isFollowing = viewModel.following ?? false
+            followButton.alpha = isFollowing ? 0.5 : 1.0
+            followButton.setTitle(isFollowing ? "Following" : "Follow", for: .normal)
+        }
+    }
+    
+    private func updateBlockedButton() {
+        if let viewModel = viewModel  {
+            let isBlocked = (viewModel.blocked ?? false)
+            contentView.alpha = isBlocked ? 0.5 : 1.0
+            contentView.isUserInteractionEnabled = !isBlocked
+            selectionStyle = isBlocked ? .none : .default
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("Coder init is not supported")
     }
+}
+
+extension DashboardTableViewCell: DashboardTableViewCellViewModelDelegate {
+    func viewModelDidUpdateFollowingState(_ viewModel: DashboardTableViewCellViewModel) {
+        updateFollowButton()
+    }
+    
+    func viewModelDidUpdateBlockedState(_ viewModel: DashboardTableViewCellViewModel) {
+        updateBlockedButton()
+    }
+    
+    
 }
