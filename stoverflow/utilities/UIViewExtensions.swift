@@ -22,4 +22,12 @@ extension UIView {
             NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: superview, attribute: .bottomMargin, multiplier: 1, constant: insets.bottom)
         ])
     }
+    
+    /// Adds constraints to make a view centred within its superview.
+    func centreInSuperview() {
+        superview?.addConstraints([
+            NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: superview, attribute: .centerY, multiplier: 1.0, constant: 0)
+        ])
+    }
 }
