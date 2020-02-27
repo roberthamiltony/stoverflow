@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An helper struct for making an API request for a list of users
 struct UsersRequest: APIRequest {
     let resourcePath = "users"
     
