@@ -9,8 +9,9 @@
 import Foundation
 
 class StackOverflowClient: APIClient {
-    /// A shared instance
-    static let shared = StackOverflowClient()
+    /// A shared instance, using a mock client if specified in the launch arguments
+    static let shared = ProcessInfo.processInfo.arguments.contains(AppDelegate.usingMocksArugment) ? MockStackOverflowClient() : StackOverflowClient()
+    
     let endpoint = "https://api.stackexchange.com/2.2/"
     private var dataTask: URLSessionDataTask?
     
@@ -42,6 +43,7 @@ class StackOverflowClient: APIClient {
     }
 }
 
+/// An error enum to describe errors specific to retrieving stack overflow users
 enum StackOverflowAPIError: Error {
     case NoItems
 }
