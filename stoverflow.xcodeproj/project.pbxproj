@@ -29,6 +29,13 @@
 		72301EEE2402DC8000A4B49A /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EED2402DC8000A4B49A /* Wrapper.swift */; };
 		72301EF02402F02A00A4B49A /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EEF2402F02A00A4B49A /* URLExtensions.swift */; };
 		72301EF22402FECA00A4B49A /* DashboardTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EF12402FECA00A4B49A /* DashboardTableViewCellViewModel.swift */; };
+		72301EF524066A9F00A4B49A /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EF424066A9F00A4B49A /* DashboardViewModelTests.swift */; };
+		72301EF92406FE1300A4B49A /* MockStackOverflowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301EF82406FE1300A4B49A /* MockStackOverflowClient.swift */; };
+		72301F002407ACEB00A4B49A /* hector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72301EFE2407ACEB00A4B49A /* hector.jpg */; };
+		72301F012407ACEB00A4B49A /* alex.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 72301EFF2407ACEB00A4B49A /* alex.jpeg */; };
+		72301F022407B40300A4B49A /* mockUsers.json in Resources */ = {isa = PBXBuildFile; fileRef = 72301EFD2407AC0000A4B49A /* mockUsers.json */; };
+		72301F0524085C6100A4B49A /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301F0424085C6100A4B49A /* UserFactory.swift */; };
+		72301F0924086DC700A4B49A /* DashboardTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301F0824086DC700A4B49A /* DashboardTableViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +84,13 @@
 		72301EED2402DC8000A4B49A /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
 		72301EEF2402F02A00A4B49A /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		72301EF12402FECA00A4B49A /* DashboardTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		72301EF424066A9F00A4B49A /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
+		72301EF82406FE1300A4B49A /* MockStackOverflowClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStackOverflowClient.swift; sourceTree = "<group>"; };
+		72301EFD2407AC0000A4B49A /* mockUsers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockUsers.json; sourceTree = "<group>"; };
+		72301EFE2407ACEB00A4B49A /* hector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hector.jpg; path = ../../../../Desktop/hector.jpg; sourceTree = "<group>"; };
+		72301EFF2407ACEB00A4B49A /* alex.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = alex.jpeg; path = ../../../../Desktop/alex.jpeg; sourceTree = "<group>"; };
+		72301F0424085C6100A4B49A /* UserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
+		72301F0824086DC700A4B49A /* DashboardTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +141,7 @@
 		72301E9A240128ED00A4B49A /* stoverflow */ = {
 			isa = PBXGroup;
 			children = (
+				72301EFC2407ABF200A4B49A /* mockData */,
 				72301EE22402968B00A4B49A /* stackOverflow */,
 				72301ED32401643A00A4B49A /* dashboard */,
 				72301ECE24015E5100A4B49A /* utilities */,
@@ -144,6 +159,8 @@
 		72301EB4240128F100A4B49A /* stoverflowTests */ = {
 			isa = PBXGroup;
 			children = (
+				72301F0324085C4E00A4B49A /* mocks */,
+				72301EF324066A7600A4B49A /* dashboardTests */,
 				72301EB5240128F100A4B49A /* stoverflowTests.swift */,
 				72301EB7240128F100A4B49A /* Info.plist */,
 			);
@@ -189,6 +206,7 @@
 				72301EE8240297B600A4B49A /* requests */,
 				72301EE52402971100A4B49A /* entities */,
 				72301EE3240296B300A4B49A /* StackOverflowClient.swift */,
+				72301EF82406FE1300A4B49A /* MockStackOverflowClient.swift */,
 			);
 			path = stackOverflow;
 			sourceTree = "<group>";
@@ -208,6 +226,33 @@
 				72301EEB2402CB3600A4B49A /* UsersRequest.swift */,
 			);
 			path = requests;
+			sourceTree = "<group>";
+		};
+		72301EF324066A7600A4B49A /* dashboardTests */ = {
+			isa = PBXGroup;
+			children = (
+				72301EF424066A9F00A4B49A /* DashboardViewModelTests.swift */,
+				72301F0824086DC700A4B49A /* DashboardTableViewCellViewModel.swift */,
+			);
+			path = dashboardTests;
+			sourceTree = "<group>";
+		};
+		72301EFC2407ABF200A4B49A /* mockData */ = {
+			isa = PBXGroup;
+			children = (
+				72301EFF2407ACEB00A4B49A /* alex.jpeg */,
+				72301EFE2407ACEB00A4B49A /* hector.jpg */,
+				72301EFD2407AC0000A4B49A /* mockUsers.json */,
+			);
+			path = mockData;
+			sourceTree = "<group>";
+		};
+		72301F0324085C4E00A4B49A /* mocks */ = {
+			isa = PBXGroup;
+			children = (
+				72301F0424085C6100A4B49A /* UserFactory.swift */,
+			);
+			path = mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,8 +359,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72301F022407B40300A4B49A /* mockUsers.json in Resources */,
 				72301EAB240128F100A4B49A /* LaunchScreen.storyboard in Resources */,
+				72301F012407ACEB00A4B49A /* alex.jpeg in Resources */,
 				72301EA8240128F100A4B49A /* Assets.xcassets in Resources */,
+				72301F002407ACEB00A4B49A /* hector.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +402,7 @@
 				72301EDF2402964D00A4B49A /* APIRequest.swift in Sources */,
 				72301EF02402F02A00A4B49A /* URLExtensions.swift in Sources */,
 				72301EDB24016DC400A4B49A /* DashboardTableViewCell.swift in Sources */,
+				72301EF92406FE1300A4B49A /* MockStackOverflowClient.swift in Sources */,
 				72301ED72401656400A4B49A /* DashboardCoordinator.swift in Sources */,
 				72301ED924016CE900A4B49A /* DashboardViewModel.swift in Sources */,
 				72301EEC2402CB3600A4B49A /* UsersRequest.swift in Sources */,
@@ -366,6 +415,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				72301EB6240128F100A4B49A /* stoverflowTests.swift in Sources */,
+				72301EF524066A9F00A4B49A /* DashboardViewModelTests.swift in Sources */,
+				72301F0524085C6100A4B49A /* UserFactory.swift in Sources */,
+				72301F0924086DC700A4B49A /* DashboardTableViewCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
