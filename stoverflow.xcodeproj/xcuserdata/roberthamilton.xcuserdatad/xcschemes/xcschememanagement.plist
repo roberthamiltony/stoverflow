@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>stoverflow.xcscheme_^#shared#^_</key>
+		<key>mockstoverflow.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>stoverflow.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>72301E97240128EC00A4B49A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>72301EB0240128F100A4B49A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>72301EBB240128F100A4B49A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
