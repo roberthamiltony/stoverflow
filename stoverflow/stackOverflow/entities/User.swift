@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Describes a User object returned by the stack overflow API
 struct User: Codable {
     var aboutMe: String?
     var acceptRate: Int?

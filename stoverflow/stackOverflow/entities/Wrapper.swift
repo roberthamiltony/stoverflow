@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Data from the stackoverflow API will be returned in a wrapper; this struct describes the data provided by the wrapper.
 struct Wrapper<T : Codable>: Codable {
     var backoff: Int?
     var errorId: Int?
