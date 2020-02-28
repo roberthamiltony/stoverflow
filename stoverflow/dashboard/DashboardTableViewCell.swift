@@ -59,8 +59,10 @@ class DashboardTableViewCell: UITableViewCell {
         let reputation = UILabel()
         nameLabel = name
         nameLabel.setContentHuggingPriority(.required, for: .vertical)
+        nameLabel.accessibilityIdentifier = "name"
         reputation.setContentHuggingPriority(.required, for: .vertical)
         reputationLabel = reputation
+        reputation.accessibilityIdentifier = "reputation"
         let labelStack = UIStackView()
         labelStack.axis = .vertical
         labelStack.translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +73,7 @@ class DashboardTableViewCell: UITableViewCell {
         image.layer.cornerRadius = 5.0
         image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.accessibilityIdentifier = "profileImage"
         let mainContentStack = UIStackView()
         mainContentStack.axis = .horizontal
         mainContentStack.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +94,9 @@ class DashboardTableViewCell: UITableViewCell {
         blockButton = block
         // TODO add localisation
         follow.setTitle("Follow", for: .normal)
+        follow.accessibilityIdentifier = "follow"
         block.setTitle("Block", for: .normal)
+        block.accessibilityIdentifier = "block"
         follow.backgroundColor = .systemBlue
         block.backgroundColor = .systemRed
         follow.addTarget(self, action: #selector(didSelectFollow(_:)), for: .touchUpInside)

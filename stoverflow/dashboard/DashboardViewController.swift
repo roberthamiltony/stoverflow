@@ -35,6 +35,7 @@ class DashboardViewController: UITableViewController {
         tableView.register(DashboardTableViewCell.self, forCellReuseIdentifier: DashboardViewController.dashboardCellReuseID)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.accessibilityIdentifier = "usersTable"
     }
     
     private func setupLoadingIndicator() {
@@ -44,6 +45,7 @@ class DashboardViewController: UITableViewController {
         view.addSubview(indicator)
         indicator.centreInSuperview()
         indicator.isHidden = true
+        indicator.accessibilityIdentifier = "loadingIndicator"
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
