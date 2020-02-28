@@ -36,6 +36,8 @@
 		72301F022407B40300A4B49A /* mockUsers.json in Resources */ = {isa = PBXBuildFile; fileRef = 72301EFD2407AC0000A4B49A /* mockUsers.json */; };
 		72301F0524085C6100A4B49A /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301F0424085C6100A4B49A /* UserFactory.swift */; };
 		72301F0924086DC700A4B49A /* DashboardTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301F0824086DC700A4B49A /* DashboardTableViewCellViewModel.swift */; };
+		72301F0C2408731700A4B49A /* DashboardPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301F0B2408731700A4B49A /* DashboardPageObject.swift */; };
+		72301F0E2408737100A4B49A /* DashboardCellPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301F0D2408737100A4B49A /* DashboardCellPageObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		72301EFF2407ACEB00A4B49A /* alex.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = alex.jpeg; path = ../../../../Desktop/alex.jpeg; sourceTree = "<group>"; };
 		72301F0424085C6100A4B49A /* UserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
 		72301F0824086DC700A4B49A /* DashboardTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		72301F0B2408731700A4B49A /* DashboardPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPageObject.swift; sourceTree = "<group>"; };
+		72301F0D2408737100A4B49A /* DashboardCellPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCellPageObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 		72301EBF240128F100A4B49A /* stoverflowUITests */ = {
 			isa = PBXGroup;
 			children = (
+				72301F0A2408730500A4B49A /* dashboard */,
 				72301EC0240128F100A4B49A /* stoverflowUITests.swift */,
 				72301EC2240128F100A4B49A /* Info.plist */,
 			);
@@ -253,6 +258,15 @@
 				72301F0424085C6100A4B49A /* UserFactory.swift */,
 			);
 			path = mocks;
+			sourceTree = "<group>";
+		};
+		72301F0A2408730500A4B49A /* dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				72301F0B2408731700A4B49A /* DashboardPageObject.swift */,
+				72301F0D2408737100A4B49A /* DashboardCellPageObject.swift */,
+			);
+			path = dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,7 +439,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72301F0C2408731700A4B49A /* DashboardPageObject.swift in Sources */,
 				72301EC1240128F100A4B49A /* stoverflowUITests.swift in Sources */,
+				72301F0E2408737100A4B49A /* DashboardCellPageObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

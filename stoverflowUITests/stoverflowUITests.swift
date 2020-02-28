@@ -9,35 +9,77 @@
 import XCTest
 
 class stoverflowUITests: XCTestCase {
-
+    var app: XCUIApplication!
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
+        app.launchArguments = ["usingMockData", "resetDatabase"]
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    func testLaunchPerformance() {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
+    
+    /// The cell should expand on tap to show the buttons
+    func testExpandingCell() {
+        let dashboardPage = DashboardPage()
+        XCTAssertTrue(dashboardPage.usersTable.waitForExistence(timeout: 1.0))
+        guard let userCell = dashboardPage.cell(forRow: 0) else {
+            XCTFail("Failed to find user cell")
+            return
         }
+        XCTAssertTrue(userCell.cell.waitForExistence(timeout: 1.0))
+        let oldFrame = userCell.cell.frame
+        userCell.cell.tap()
+        XCTAssertLessThan(oldFrame.height, userCell.cell.frame.height)
     }
+    
+    // TODO investiagte why buttons won't appear in accessibility heirarchy
+//    /// Tapping the follow button should change the text of the follow button
+//    func testFollowingUser() {
+//        let dashboardPage = DashboardPage()
+//        XCTAssertTrue(dashboardPage.usersTable.waitForExistence(timeout: 1.0))
+//        guard let userCell = dashboardPage.cell(forRow: 0) else {
+//            XCTFail("Failed to find user cell")
+//            return
+//        }
+//        XCTAssertTrue(userCell.cell.exists)
+//        userCell.cell.tap()
+//        XCTAssertTrue(userCell.follow.waitForExistence(timeout: 0.5))
+//        let oldText = userCell.follow.title
+//        userCell.follow.tap()
+//        XCTAssertNotEqual(oldText, userCell.follow.title)
+//    }
+//
+//    /// Tapping the block button should change the text of the block button and disable interaction for the cell content
+//    func testBlockingUser() {
+//        let dashboardPage = DashboardPage()
+//        XCTAssertTrue(dashboardPage.usersTable.waitForExistence(timeout: 1.0))
+//        guard let userCell = dashboardPage.cell(forRow: 0) else {
+//            XCTFail("Failed to find user cell")
+//            return
+//        }
+//        XCTAssertTrue(userCell.cell.exists)
+//        userCell.cell.tap()
+//        XCTAssertTrue(userCell.block.waitForExistence(timeout: 0.2))
+//        let oldText = userCell.block.title
+//        userCell.follow.tap()
+//        XCTAssertNotEqual(oldText, userCell.block.title)
+//        XCTAssertFalse(userCell.follow.isEnabled)
+//    }
+//
+//    /// Tapping the follow button for a followed user should change the text back ot what it was originally
+//    func testUnfollowingUser() {
+//        let dashboardPage = DashboardPage()
+//        XCTAssertTrue(dashboardPage.usersTable.waitForExistence(timeout: 1.0))
+//        guard let userCell = dashboardPage.cell(forRow: 0) else {
+//            XCTFail("Failed to find user cell")
+//            return
+//        }
+//        XCTAssertTrue(userCell.cell.exists)
+//        userCell.cell.tap()
+//        XCTAssertTrue(userCell.follow.waitForExistence(timeout: 0.2))
+//        let oldText = userCell.follow.title
+//        userCell.follow.tap()
+//        userCell.follow.tap()
+//        XCTAssertEqual(oldText, userCell.follow.title)
+//
+//    }
 }
