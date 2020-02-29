@@ -30,4 +30,11 @@ extension UIView {
             NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: superview, attribute: .centerY, multiplier: 1.0, constant: 0)
         ])
     }
+    
+    /// Adds constraints to make the width equal to the height
+    func widthEqualHeight() {
+        addConstraints([
+            NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1.0, constant: 0)
+        ])
+    }
 }

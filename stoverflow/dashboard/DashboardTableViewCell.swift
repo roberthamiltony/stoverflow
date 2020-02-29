@@ -37,6 +37,9 @@ class DashboardTableViewCell: UITableViewCell {
     /// An image view intented to display a user's profile image
     private (set) var profileImage: UIImageView!
     
+    /// An image to indicate that the user is being followed
+    private (set) var followingIndicator: UIImageView!
+    
     /// A button intented to initiate the process of following a user
     private (set) var followButton: UIButton!
     
@@ -82,16 +85,21 @@ class DashboardTableViewCell: UITableViewCell {
         image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         image.accessibilityIdentifier = "profileImage"
+        let followIndicator = UIImageView()
+        followingIndicator = followIndicator
+        followIndicator.translatesAutoresizingMaskIntoConstraints = false
+        followIndicator.image = UIImage(systemName: "hand.thumbsup")
+        followIndicator.tintColor = .label
         let mainContentStack = UIStackView()
         mainContentStack.axis = .horizontal
         mainContentStack.translatesAutoresizingMaskIntoConstraints = false
         mainContentStack.addArrangedSubview(image)
         mainContentStack.addArrangedSubview(labelStack)
+        mainContentStack.addArrangedSubview(followIndicator)
         mainContentStack.spacing = 10.0
         mainContentStack.isUserInteractionEnabled = false
-        image.addConstraints([
-            NSLayoutConstraint(item: image, attribute: .width, relatedBy: .equal, toItem: profileImage, attribute: .height, multiplier: 1.0, constant: 0)
-        ])
+        image.widthEqualHeight()
+        followIndicator.widthEqualHeight()
         mainStack.addArrangedSubview(mainContentStack)
     }
     
@@ -165,6 +173,7 @@ class DashboardTableViewCell: UITableViewCell {
             let isFollowing = viewModel.following ?? false
             followButton.alpha = isFollowing ? 0.5 : 1.0
             followButton.setTitle(isFollowing ? "Following" : "Follow", for: .normal)
+            followingIndicator.alpha = isFollowing ? 1 : 0
         }
     }
     
