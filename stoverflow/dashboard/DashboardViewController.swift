@@ -64,6 +64,7 @@ class DashboardViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: DashboardViewController.dashboardCellReuseID) as? DashboardTableViewCell, indexPath.row < viewModel?.userVMs.count ?? 0, let cellVM = viewModel?.userVMs[indexPath.row] {
             cell.viewModel = cellVM
+            cell.delegate = self
             return cell
         } else {
             // This should never be reached
@@ -74,12 +75,10 @@ class DashboardViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? DashboardTableViewCell {
             cell.isSelected = false
-            // TODO 1: fix odd animation
-            tableView.beginUpdates()
-            cell.toggleExpandedState()
-            tableView.endUpdates()
+            toggleCellState(cell: cell)
         }
     }
+    
     
     private func showLoadingIndicator() {
         UIView.animate(withDuration: 0.2) {
@@ -96,6 +95,13 @@ class DashboardViewController: UITableViewController {
             self.loadingIndicator.isHidden = true
             self.loadingIndicator.stopAnimating()
         })
+    }
+    
+    private func toggleCellState(cell: DashboardTableViewCell) {
+        // TODO 1: fix odd animation
+        tableView.beginUpdates()
+        cell.toggleExpandedState()
+        tableView.endUpdates()
     }
 }
 
@@ -115,6 +121,12 @@ extension DashboardViewController: DashboardViewModelDelegate {
         tableView.reloadData()
         hideLoadingIndicator()
     }
-    
-    
+}
+
+extension DashboardViewController: DashboardTableViewCellDelegate {
+    func didBlockUser(_ cell: DashboardTableViewCell) {
+        if cell.isExpanded {
+            toggleCellState(cell: cell)
+        }
+    }
 }
