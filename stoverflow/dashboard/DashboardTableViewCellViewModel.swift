@@ -47,7 +47,7 @@ class DashboardTableViewCellViewModel {
     }
     
     /// A delegate to handle updates from this instance
-    var delegate: DashboardTableViewCellViewModelDelegate?
+    weak var delegate: DashboardTableViewCellViewModelDelegate?
     
     private var task: URLSessionDataTask?
     
@@ -115,7 +115,7 @@ class DashboardTableViewCellViewModel {
 }
 
 /// A protocol to be implemented to receive update from a DashboardTableViewCellViewModel instance
-protocol DashboardTableViewCellViewModelDelegate {
+protocol DashboardTableViewCellViewModelDelegate: class {
     
     /// Called when the following state of the view model updates
     /// - Parameter viewModel: The view model which has an updated following state

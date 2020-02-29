@@ -74,7 +74,7 @@ class DashboardViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? DashboardTableViewCell {
             cell.isSelected = false
-            // TODO fix odd animation
+            // TODO 1: fix odd animation
             tableView.beginUpdates()
             cell.toggleExpandedState()
             tableView.endUpdates()

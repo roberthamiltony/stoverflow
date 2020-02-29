@@ -92,7 +92,7 @@ class DashboardTableViewCell: UITableViewCell {
         let block = UIButton()
         followButton = follow
         blockButton = block
-        // TODO add localisation
+        // TODO 2: add localisation
         follow.setTitle("Follow", for: .normal)
         follow.accessibilityIdentifier = "follow"
         block.setTitle("Block", for: .normal)

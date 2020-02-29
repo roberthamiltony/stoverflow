@@ -11,7 +11,7 @@ import CoreData
 @testable import stoverflow
 
 class DashboardTableViewCellViewModelTests: XCTestCase {
-    // TODO add tests for image fetching
+    // TODO 3: add tests for image fetching
     private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     private var followingDelegateCalled: Bool!
     private var blockedDelegateCalled: Bool!

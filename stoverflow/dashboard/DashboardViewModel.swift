@@ -51,7 +51,7 @@ class DashboardViewModel {
                         group.leave()
                     }
                 }
-                // TODO handle image loading failures
+                // Image loading failures will be handled silently
                 group.notify(queue: .main) {
                     self.delegate?.viewModelGetUsersDidSucceed(self)
                 }

@@ -31,7 +31,7 @@ class stoverflowUITests: XCTestCase {
         XCTAssertLessThan(oldFrame.height, userCell.cell.frame.height)
     }
     
-    // TODO investiagte why buttons won't appear in accessibility heirarchy
+    // TODO 4: investiagte why buttons won't appear in accessibility heirarchy
 //    /// Tapping the follow button should change the text of the follow button
 //    func testFollowingUser() {
 //        let dashboardPage = DashboardPage()
