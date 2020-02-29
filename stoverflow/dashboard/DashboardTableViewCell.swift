@@ -20,6 +20,14 @@ class DashboardTableViewCell: UITableViewCell {
         }
     }
     
+    /// A delegate to handle updates from this instance
+    weak var delegate: DashboardTableViewCellDelegate?
+    
+    /// Whether the cell is in its expanded state
+    var isExpanded: Bool {
+        return !mainStack.arrangedSubviews[1].isHidden
+    }
+    
     /// A label intented to display a name
     private (set) var nameLabel: UILabel!
     
@@ -164,8 +172,10 @@ class DashboardTableViewCell: UITableViewCell {
         if let viewModel = viewModel  {
             let isBlocked = (viewModel.blocked ?? false)
             contentView.alpha = isBlocked ? 0.5 : 1.0
-            contentView.isUserInteractionEnabled = !isBlocked
-            selectionStyle = isBlocked ? .none : .default
+            isUserInteractionEnabled = !isBlocked
+            if isBlocked {
+                delegate?.didBlockUser(self)
+            }
         }
     }
     
@@ -182,6 +192,12 @@ extension DashboardTableViewCell: DashboardTableViewCellViewModelDelegate {
     func viewModelDidUpdateBlockedState(_ viewModel: DashboardTableViewCellViewModel) {
         updateBlockedButton()
     }
+}
+
+/// A protocol to be implemented to handle updates from DashboardTableViewCell instances
+protocol DashboardTableViewCellDelegate: class {
     
-    
+    /// Called when the blocked state of the cell's user becomes true
+    /// - Parameter cell: The cell which is handling a now blocked user
+    func didBlockUser(_ cell: DashboardTableViewCell)
 }
