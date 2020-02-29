@@ -130,7 +130,7 @@ class DashboardTableViewCell: UITableViewCell {
         expanded.addArrangedSubview(follow)
         expanded.addArrangedSubview(block)
         mainStack.addArrangedSubview(expanded)
-        toggleExpandedState()
+        mainStack.arrangedSubviews[1].isHidden = true
     }
     
     /// Toggles the state of the cell to show or hide the buttons, depending on the current state. The table view containing the
