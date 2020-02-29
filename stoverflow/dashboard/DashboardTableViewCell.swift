@@ -136,7 +136,10 @@ class DashboardTableViewCell: UITableViewCell {
     /// Toggles the state of the cell to show or hide the buttons, depending on the current state. The table view containing the
     /// cell will need to be notified of the change for this to be properly displayed
     func toggleExpandedState() {
-        mainStack.arrangedSubviews[1].isHidden = !mainStack.arrangedSubviews[1].isHidden
+        UIView.animate(withDuration: 0.3) {
+            self.mainStack.arrangedSubviews[1].isHidden = !self.mainStack.arrangedSubviews[1].isHidden
+            self.mainStack.layoutIfNeeded()
+        }
     }
     
     @objc private func didSelectFollow(_ sender: Any?) {
